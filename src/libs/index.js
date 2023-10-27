@@ -17,3 +17,14 @@ module.exports.fetchTransactions = async (address) => {
 module.exports.toEth = (amount) => {
     return (parseInt(amount) / 1e18).toLocaleString()
 }
+
+module.exports.pickFirstAndLastFourChars = (inputString) => {
+    if (inputString.length < 8) {
+      return "The string is too short to pick the first and last 4 characters.";
+    }
+  
+    const firstFour = inputString.substring(0, 4);
+    const lastFour = inputString.substring(inputString.length - 4);
+  
+    return `${firstFour}...${lastFour}`
+  }
