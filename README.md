@@ -1,6 +1,3 @@
-<center>FUND TRACER</center>
-![image](https://github.com/hackatonbuilders/ChainBase/assets/66218597/8c8ff65a-52a4-4f96-a5b9-31fca05ab300)
-
 ## Problem
  People struggle to track the movement of funds on the Ethereum blockchain, especially when there is a hack. This is because they need to manually scroll through and examine every related transaction on Etherscan, which is time-consuming and error-prone.
 
