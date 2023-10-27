@@ -15,6 +15,27 @@ const colors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
   '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
 for (let index = 0; index < 20; index++) {
+  /* 
+    - each node should represent eth being transfered at a transaction and links to represent 
+    the origin and destination of a transaction or for mutiple transactions within each transaction.
+    eg. A sends 3eth to B, then B later sends 0.5eth to Q, in that case we have 2 nodes and 2 links
+    node1 = 3eth
+    node2 = 0.5eth
+    link1 = A-B
+    link2 = B-Q
+
+    assuming B is the target address and there were 4 sub transactions within the transaction B-Q
+    sub-transaction1 = B-Q
+    sub-transaction2 = B-F
+    sub-transaction3 = B-A
+    sub-transaction4 = B-Y
+
+    we would now have 4 links
+    link1 = B-Q
+    link2 = B-F
+    link3 = B-A
+    link4 = B-Y
+  **/
   nodes.push({ name: index, color: colors[index] })
 
   const source = index === 0 ? index : index - 1
