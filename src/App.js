@@ -7,18 +7,20 @@ import Tree from 'react-d3-tree';
 function App() {
   const [txs, setTxs] = useState([])
   const [customData, setCustomData] = useState({})
+  const [addy, setAddy] = useState('')
 
-  const fetchTxs = async () => {
-    const res = await fetchTransactions("0x629e7Da20197a5429d30da36E77d06CdF796b71A", 8)
+  const fetchTxs = async (addy) => {
+    if (!addy) return
+    const res = await fetchTransactions(addy, 6)
     setTxs(res)
   }
 
   useEffect(() => {
-    fetchTxs()
-  }, [])
+    fetchTxs(addy)
+  }, [addy])
 
   useEffect(() => {
-    if (txs.length === 0) return
+    if (txs && txs.length === 0) return
     const cData = {}
     const sentEth = (txs[0]?.value)
     const attr = `${toEth(sentEth)}eth`
@@ -65,6 +67,16 @@ function App() {
 
   return (
     <div className="App-header" style={{ width: '100%', height: '100vh' }}>
+      <form>
+        <label className="block">
+          <span className="block text-sm font-medium text-white">Input Address</span>
+          <input type="text" value={addy} onChange={(e) => setAddy(e.target.value)} 
+          className="mt-1 block w-80 px-5 py-2 
+          bg-white border border-slate-300 text-black 
+          rounded-md text-sm shadow-sm placeholder-slate-400
+          "/>
+        </label>
+      </form>
       {txs && txs.length > 0 && (
         <Tree data={customData} />
       )}
