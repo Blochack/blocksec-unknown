@@ -10,6 +10,7 @@ import {useCenteredTree} from "./lib/hooks";
 
 function App() {
     const [address, setAddress] = useState('')
+    const [isFetching, setIsFetching] = useState(false)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
     const [transaction, setTransaction] = useState<Transaction | undefined>()
     const [treeData, setTreeData] = useState<RawNodeDatum | undefined>()
@@ -18,19 +19,29 @@ function App() {
     const {translate, containerRef} = useCenteredTree();
 
     const loadTransactions = async (address: string) => {
-        if (!address) return
+        if (!address) {
+            alert("Adrress is required")
+            return
+        }
 
         const res = await fetchTransactions(address, 6)
         setTransactions(res)
     }
 
     const handleEploreClick = async () => {
-        await loadTransactions(address)
+        try {
+            setIsFetching(true)
+            await loadTransactions(address)
+        } catch (e) {
+            alert((e as unknown as Error).message)
+        } finally {
+            setIsFetching(false)
+        }
     }
 
     const handleNodeClick = async (data: TreeNodeDatum) => {
         if (data.attributes?.hash) {
-            const tx = transactions.find(tx => tx.transaction_hash == data.attributes!.hash)
+            const tx = transactions.find(tx => tx.transaction_hash === data.attributes!.hash)
             if (tx) {
                 setTransaction(() => tx)
                 setIsDialogOpen(true)
@@ -103,7 +114,12 @@ function App() {
                         onChange={(e) => setAddress(e.target.value)}
                         className="mt-1 py-6 mb-3 w-full"/>
 
-                    <Button className='mt-3 py-6 w-full' onClick={handleEploreClick}>Explore</Button>
+                    <Button
+                        className='mt-3 py-6 w-full'
+                        onClick={handleEploreClick}
+                        disabled={isFetching}>
+                        Explore
+                    </Button>
                 </div>
 
             }
@@ -129,7 +145,7 @@ const TransactionDialog = ({transaction, isOpen, toggleOpen}: {
                     <DialogTitle>Transaction</DialogTitle>
                 </DialogHeader>
 
-                <ul role='list' className='divide-y text-sm'>
+                <ul className='divide-y text-sm'>
                     <li className='flex items-center justify-between py-3'>
                         <span>Transaction Hash</span>
                         <span>{transaction?.transaction_hash ? truncateAddress(transaction.transaction_hash) : ''}</span>
