@@ -19,7 +19,7 @@ To install and run the project, follow these steps:
 
 1.  Clone the repository:
 ```
-git clone https://github.com/hackatonbuilders/ChainBase.git
+git clone https://github.com/hackatonbuilders/Ethereum-Visual-Explorer.git
 ```
 2.  Install the dependencies:
 ```
