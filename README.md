@@ -1,71 +1,80 @@
-# Chain Visual Explorer
-  A multichain visual explorer which shows a graphical representation of the transaction history of any wallet address using tree diagram. 
-  
-  **Supported chains:**
-  - Etheruem
-  - Base
-  - Optimism
-  - Arbitrum One
-  - Avalanche C-Chain
-  - Fantom
-  - Polygon
+# Chain Visual Explorer (CVE)
+  A multichain visual explorer which traces the entire history of a transaction on any wallet address and illustrates it  in a tree diagram. 
+using tree diagram.
 
-## Problem
- People struggle to track the movement of funds on the blockachin, especially when there is a hack. This is because they need to manually scroll through and examine every related transaction on a blockchain explorer, which is time-consuming and error-prone.
+**Supported chains:**
+- Ethereum
+- Base
+- Optimism
+- Arbitrum One
+- Avalanche C-Chain
+- Fantom
+- Polygon
+
+## Problem We Are Solving
+This year, over $1.2 Billion have been lost to Hacks and rug Pulls. 
+Companies and Security researchers spend a lot of time struggling to trace the transaction flow to discover the instance where the Hack took place. This is quite a daunting, error-prone and time-consuming experience.
 
 ## Solution
- We have built a platform that solves this problem by automatically tracing and illustrating the entire history and destination of funds on any wallet address. It uses a web diagram to make the information easy to understand and visualize. All you need to do is enter the wallet address or ENS domain name, and we automatically show all the wallets and transactions. 
+ We present to you CVE (Chain Visual Explorer), a Multichain Visual Explorer that automatically traces and illustrates the entire history and transaction flow of funds of any wallet address. We make use of a tree diagram to illustrate the transaction for a more visual and easy-to-understand experience.
 
-Here are some of the benefits of our platform:
--   It saves users time and eliminates the risk of human error when tracing the movement of funds.
--  It helps users visualise transactions across multiple chains.
+## Benefits of CVE
+-   It saves users and companies time.
+-   It reduces the risk of human error while tracing a transaction flow.
+-   It alerts investors of malicious activity of a wallet such as if an address has been linked with a rug pull contract or HoneyPot Hack.
 
-## How we built Chain Visual Explorer
-
-
-## Technology
-
--   Chainbase API
--   TypeScript
--   React.js
-
-## Getting Started
-To use the Chain Visual Explorer:
-1. Go to `https://cve-v1.vercel.app`
-2. Select the blockchain.
-3. Enter the wallet address you want to explore. 
-4. To explore addresses connect to each node, click on the node to expand the tree.
-
-## Installation 
-To install and run the project, follow these steps:
-
-1.  Clone the repository:
-```
-git clone https://github.com/hackatonbuilders/Ethereum-Visual-Explorer.git
-```
-2.  Install the dependencies:
-```
-npm install
-```
-3.  Start the project:
-```
-npm start
-```
-4. Open a web browser and navigate to  
-```
-http://localhost:8000/
-```
-6.  Enter the Ethereum wallet address that you want to track into the search bar and click "Trace."
+# Technologies Used -
+Chainbase API, TypeScript, Next.js ,
 
 ## Demo
 
 [Link to video demo]
 
 
+## How To Use
+  - Enter a wallet address or an ENS domain name.
+
+## To deploy Locally 
+
+To use the Chain Visual Explorer:
+1. Go to `https://cve-v1.vercel.app`
+2. Select the blockchain.
+3. Enter the wallet address you want to explore. 
+4. To explore addresses connect to each node, click on the node to expand the tree.
+
+## Installation
+
+To install and run the project, follow these steps:
+
+1. Clone the repository:
+
+```
+git clone https://github.com/hackatonbuilders/Ethereum-Visual-Explorer.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+3. Start the project:
+
+```
+npm start
+```
+
+4. Open a web browser and navigate to
+
+```
+http://localhost:8000/
+```
+6.  Enter the Ethereum wallet address you want to track into the search bar and click "Trace."
+
+
 ## License
 
 This project is licensed under the MIT license.
-
 
 
 
