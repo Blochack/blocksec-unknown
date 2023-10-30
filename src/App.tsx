@@ -76,6 +76,8 @@ function App() {
         }
 
         const transactions = await fetchTransactions({address, chainId: currentChain.chainId, count: 10})
+        if (transactions.length < 1) return
+
         const rootTransaction = transactions.pop()
         const rootNode = createChild(rootTransaction)
         if (!rootNode) return
