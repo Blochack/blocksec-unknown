@@ -3,24 +3,13 @@
 using a tree diagram.
 
 ## How To Use
-  - Enter a wallet address or an ENS domain name.
-
-## To deploy Locally 
-
 To use the Chain Visual Explorer:
 1. Go to [https://cve-v1.vercel.app]
 2. Select the blockchain.
-3. Enter the wallet address you want to explore. 
+3. Enter a wallet address or an ENS domain name.
 4. To explore addresses connected to each node, click on the node to expand the tree.
 
-**Supported chains:**
-- Ethereum
-- Base
-- Optimism
-- Arbitrum One
-- Avalanche C-Chain
-- Fantom
-- Polygon
+
 
 ## Problem We Are Solving
 This year, over $1.2 Billion have been lost to Hacks and rug Pulls. 
@@ -37,14 +26,22 @@ Companies and Security researchers spend a lot of time struggling to trace the t
 # Technologies Used -
 Chainbase API, TypeScript, Next.js,
 
-## Demo
+**Supported chains:**
+- Ethereum
+- Base
+- Optimism
+- Arbitrum One
+- Avalanche C-Chain
+- Fantom
+- Polygon
 
+##  Video Demo
 [Link to video demo]
 
 
 
 
-## Installation
+##  To deploy Locally 
 
 To install and run the project, follow these steps:
 
