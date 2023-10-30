@@ -1,6 +1,17 @@
 # Chain Visual Explorer (CVE)
   A multichain visual explorer which traces the entire history of a transaction on any wallet address and illustrates it  in a tree diagram. 
-using tree diagram.
+using a tree diagram.
+
+## How To Use
+  - Enter a wallet address or an ENS domain name.
+
+## To deploy Locally 
+
+To use the Chain Visual Explorer:
+1. Go to [https://cve-v1.vercel.app]
+2. Select the blockchain.
+3. Enter the wallet address you want to explore. 
+4. To explore addresses connected to each node, click on the node to expand the tree.
 
 **Supported chains:**
 - Ethereum
@@ -24,23 +35,14 @@ Companies and Security researchers spend a lot of time struggling to trace the t
 -   It alerts investors of malicious activity of a wallet such as if an address has been linked with a rug pull contract or HoneyPot Hack.
 
 # Technologies Used -
-Chainbase API, TypeScript, Next.js ,
+Chainbase API, TypeScript, Next.js,
 
 ## Demo
 
 [Link to video demo]
 
 
-## How To Use
-  - Enter a wallet address or an ENS domain name.
 
-## To deploy Locally 
-
-To use the Chain Visual Explorer:
-1. Go to `https://cve-v1.vercel.app`
-2. Select the blockchain.
-3. Enter the wallet address you want to explore. 
-4. To explore addresses connect to each node, click on the node to expand the tree.
 
 ## Installation
 
