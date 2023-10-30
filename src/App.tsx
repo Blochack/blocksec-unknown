@@ -28,8 +28,16 @@ import {Arr} from "./components/icons/arr";
 import {External} from "./components/icons/external";
 import {Back} from "./components/icons/back";
 import {useToast} from "./components/ui/use-toast";
+import exploitersData from "./data/exploiters.json"
+import {Alert, AlertDescription, AlertTitle} from "./components/ui/alert";
+import {ExclamationTriangleIcon} from "@radix-ui/react-icons";
 
 const defaultChain = {chainId: "1", name: "Ethereum", symbol: "ETH", explorer: "https://etherscan.io"}
+const exploiters: { [key: string]: string } = {}
+for (const address in exploitersData) {
+    // @ts-ignore
+    exploiters[address.toLowerCase()] = exploitersData[address]
+}
 
 function App() {
     const [address, setAddress] = useState('')
@@ -68,6 +76,8 @@ function App() {
         }
 
         const transactions = await fetchTransactions({address, chainId: currentChain.chainId, count: 10})
+        if (transactions.length < 1) return
+
         const rootTransaction = transactions.pop()
         const rootNode = createChild(rootTransaction)
         if (!rootNode) return
@@ -135,8 +145,6 @@ function App() {
 
     const handleNodeClick = async (nodeDatum: CustomNodeDatum, hasChildren: boolean) => {
         try {
-
-
             if (nodeDatum.id) {
                 const transaction = transactions.find(tx => tx.transaction_hash === nodeDatum.id)
                 if (transaction) {
@@ -167,7 +175,8 @@ function App() {
         <g onClick={() => handleNodeClick(nodeDatum, (nodeDatum.children || []).length > 0)}>
             <circle
                 r="10"
-                className={nodeDatum.children && nodeDatum.children.length > 0 ? 'fill-primary' : 'stroke-primary' + ' h-6 w-6'}
+                // @ts-ignore
+                className={nodeDatum.children && nodeDatum.children.length > 0 ? ((!!exploiters[nodeDatum?.attributes.from] || !!exploiters[nodeDatum?.attributes.to]) ? 'fill-destructive' : 'fill-primary') : ((!!exploiters[nodeDatum?.attributes.from] || !!exploiters[nodeDatum?.attributes.to]) ? 'stroke-destructive' : 'stroke-primary') + ' h-6 w-6'}
             />
 
             <text className='fill-gray-300' x="20">
@@ -305,7 +314,16 @@ const TransactionDialog = ({transaction, chain, isOpen, toggleOpen}: {
                     <DialogTitle className='text-left'>Transaction</DialogTitle>
                 </DialogHeader>
 
-
+                {/*@ts-ignore*/}
+                {(!!exploiters[transaction?.from_address.toLowerCase()] || !!exploiters[transaction?.to_address.toLowerCase()]) &&
+                    <Alert variant="destructive">
+                        <ExclamationTriangleIcon className="h-4 w-4"/>
+                        <AlertDescription>
+                            {/*@ts-ignore*/}
+                            {`Some addresses involved in this transaction are reported to be associated with ${(exploiters[transaction?.from_address.toLowerCase()]?.toLowerCase() === exploiters[transaction?.to_address.toLowerCase()]?.toLowerCase()) ? exploiters[transaction?.from_address.toLowerCase()] : (exploiters[transaction?.from_address.toLowerCase()] && exploiters[transaction?.from_address.toLowerCase()]) ? exploiters[transaction?.from_address.toLowerCase()] + ' and ' + exploiters[transaction?.to_address.toLowerCase()] : exploiters[transaction?.from_address.toLowerCase()] ? exploiters[transaction?.from_address.toLowerCase()] : exploiters[transaction?.to_address.toLowerCase()]} exploit/hack`}
+                        </AlertDescription>
+                    </Alert>
+                }
                 <div className='text-center'>
                     <h4 className='text-md mb-3 font-semibdold'>Transaction Value</h4>
                     <h2 className='text-2xl font-semibold'>{fromWei(transaction?.value || "0")} {chain.symbol}</h2>

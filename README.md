@@ -1,14 +1,15 @@
 # Chain Visual Explorer (CVE)
   A multichain visual explorer which traces the entire history of a transaction on any wallet address and illustrates it  in a tree diagram. 
-  
-  **Supported chains:**
-  - Ethereum
-  - Base
-  - Optimism
-  - Arbitrum One
-  - Avalanche C-Chain
-  - Fantom
-  - Polygon
+using tree diagram.
+
+**Supported chains:**
+- Ethereum
+- Base
+- Optimism
+- Arbitrum One
+- Avalanche C-Chain
+- Fantom
+- Polygon
 
 ## Problem We Are Solving
 This year, over $1.2 Billion have been lost to Hacks and rug Pulls. 
@@ -34,30 +35,41 @@ Chainbase API, TypeScript, Next.js ,
   - Enter a wallet address or an ENS domain name.
 
 ## To deploy Locally 
-To use the Chain Visual Explorer:
-1. Go to `
 
-## Installation 
+To use the Chain Visual Explorer:
+1. Go to `https://cve-v1.vercel.app`
+2. Select the blockchain.
+3. Enter the wallet address you want to explore. 
+4. To explore addresses connect to each node, click on the node to expand the tree.
+
+## Installation
+
 To install and run the project, follow these steps:
 
-1.  Clone the repository:
+1. Clone the repository:
+
 ```
 git clone https://github.com/hackatonbuilders/Ethereum-Visual-Explorer.git
 ```
-2.  Install the dependencies:
+
+2. Install the dependencies:
+
 ```
 npm install
 ```
-3.  Start the project:
+
+3. Start the project:
+
 ```
 npm start
 ```
-4. Open a web browser and navigate to  
+
+4. Open a web browser and navigate to
+
 ```
 http://localhost:8000/
 ```
 6.  Enter the Ethereum wallet address you want to track into the search bar and click "Trace."
-
 
 
 ## License
