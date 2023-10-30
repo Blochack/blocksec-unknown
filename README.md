@@ -18,17 +18,23 @@
 
 Here are some of the benefits of our platform:
 -   It saves users time and eliminates the risk of human error when tracing the movement of funds.
--   It helps investors to protect themselves from fraud by alerting them if an address has been linked with a rug pull contract or honey pot.
+-  It helps users visualise transactions across multiple chains.
+
+## How we built Chain Visual Explorer
+
 
 ## Technology
 
 -   Chainbase API
 -   TypeScript
--   Next.js
+-   React.js
 
 ## Getting Started
 To use the Chain Visual Explorer:
-1. Go to `
+1. Go to `https://cve-v1.vercel.app`
+2. Select the blockchain.
+3. Enter the wallet address you want to explore. 
+4. To explore addresses connect to each node, click on the node to expand the tree.
 
 ## Installation 
 To install and run the project, follow these steps:
