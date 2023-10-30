@@ -26,7 +26,7 @@ export const fetchTransactions = async ({address, count, chainId}: { address: st
     }
 
     const json = await response.json()
-    return json.data
+    return json.data || []
 }
 
 export const fromWei = (amount: string) => {
@@ -51,7 +51,7 @@ export const createChild = (tx: Transaction) => {
     return {
         name: truncateAddress(tx.from_address),
         id: tx.transaction_hash,
-        attributes: {},
+        attributes: {from: tx.from_address.toLowerCase(), to: tx.to_address.toLowerCase()},
         children: []
     } as RawNodeDatum;
 }
